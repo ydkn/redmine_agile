@@ -19,7 +19,7 @@
 
 require 'redmine'
 
-AGILE_VERSION_NUMBER = '1.3.13'
+AGILE_VERSION_NUMBER = '1.4.0'
 AGILE_VERSION_TYPE = "Light version"
 
 Redmine::Plugin.register :redmine_agile do
@@ -33,7 +33,6 @@ Redmine::Plugin.register :redmine_agile do
   requires_redmine :version_or_higher => '2.3'
 
   settings :default => {
-    'issues_per_column' => "10",
     'default_columns' => %w(tracker assigned_to)
                        },
            :partial => 'settings/agile/general'
