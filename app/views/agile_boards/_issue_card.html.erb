@@ -118,11 +118,8 @@
         if (evt.keyCode == 27) {
             $('html.agile-board-fullscreen').removeClass('agile-board-fullscreen');
             $(".issue-card").addClass("hascontextmenu");
+            saveFullScreenState();
         }
-    };
-
-    if ($('html').hasClass('agile-board-fullscreen')) {
-      $(".issue-card[data-id=<%= issue.id %>]").removeClass("hascontextmenu");
     };
 
     $("table.issues-board thead").html("<%=escape_javascript render_board_headers(@query.board_statuses) %>");

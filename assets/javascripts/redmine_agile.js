@@ -129,7 +129,7 @@
         changeHtmlNumber(elem, value);
       });
     };
-    
+
     this.successSortable = function(oldStatusId, newStatusId, oldSwimLaneId, newSwimLaneId) {
       clearErrorMessage();
     };
@@ -410,6 +410,7 @@
               .find('tbody')
               .remove()
               .end()
+              .addClass('sticky')
               .css({'display': 'table', 'top': '0px', 'position': 'fixed'})
               .insertBefore($this)
               .hide();
@@ -474,6 +475,7 @@
               $('html.agile-board-fullscreen').removeClass('agile-board-fullscreen');
               $(".issue-card").addClass("hascontextmenu");
               bindScroll();
+              saveFullScreenState();
           }
         }
       );
@@ -626,6 +628,11 @@ function cancelInlineComment(node){
   $(node).parent().siblings('.quick-edit-card').toggleClass('hidden');
   return false;
 }
+
+function saveFullScreenState() {
+  state = $('html').hasClass('agile-board-fullscreen');
+  localStorage.setItem('full-screen-board', state);
+};
 
 $(document).ready(function(){
   $('table.issues-board').StickyHeader();

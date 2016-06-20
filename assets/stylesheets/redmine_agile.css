@@ -29,6 +29,8 @@ html.agile-board-fullscreen table.list.issues-board {
   right: 0px;
 }
 
+html.agile-board-fullscreen table.list.issues-board.sticky { min-height: auto; }
+
 html.agile-board-fullscreen .icon-fullscreen {
   position: fixed;
   right: 5px;
