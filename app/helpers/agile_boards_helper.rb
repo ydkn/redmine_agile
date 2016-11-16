@@ -34,6 +34,7 @@ module AgileBoardsHelper
       th_attributes[:"data-column-id"] = leaf.id
       issue_count = leaf.instance_variable_get("@issue_count") || 0
       count_tag = " (#{content_tag(:span, issue_count.to_i, :class => 'count')})".html_safe
+      
 
       # estimated hours total
       story_points_count = leaf.instance_variable_get("@story_points") || 0

@@ -89,6 +89,10 @@ module RedmineAgile
       [total_left, cumulative_left, total_done]
     end
 
+    def use_subissue_done_ratio
+      !Setting.respond_to?(:parent_issue_done_ratio) || Setting.parent_issue_done_ratio == 'derived' || Setting.parent_issue_done_ratio.nil?
+    end
+
   private
 
     def scope_by_created_date

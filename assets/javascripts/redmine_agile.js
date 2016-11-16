@@ -226,7 +226,7 @@
             }
           });
         }
-      }).disableSelection();
+      });
 
     };
 
@@ -293,7 +293,7 @@
     this.getToolTipInfo = function(node, url){
       var issue_id = $(node).parents(".issue-card").data("id");
       var tip = $(node).children(".tip");
-      if( $(tip).html() && $(tip).html().trim() != "")
+      if( $(tip).html() && $.trim($(tip).html()) != "")
         return;
       $.ajax({
           url: url,
@@ -314,7 +314,7 @@
     this.saveInlineComment = function(node, url){
       var node = node;
       var comment = $(node).siblings("textarea").val();
-      if (comment.trim() === "") return false;
+      if ($.trim(comment) === "") return false;
       $(node).prop('disabled', true);
       $('.lock').show();
       var card = $(node).parents(".issue-card");
@@ -346,7 +346,7 @@
       $('.new-card__input').keyup(function(evt){
         var node = this;
         evt = evt || window.event;
-        subject = $(node).val().trim();
+        subject = $.trim($(node).val());
         if (evt.keyCode == 13 && subject.length != 0) {
           $.ajax({
             url: url,
@@ -600,7 +600,7 @@ function showInlineCommentNode(quick_comment){
 function showInlineComment(node, url){
   $(node).parent().toggleClass('hidden');
   var quick_comment = $(node).parents(".fields").children(".quick-comment");
-  if ( $(quick_comment).html().trim() != '' ){
+  if ( $.trim($(quick_comment).html()) != '' ){
     showInlineCommentNode(quick_comment);
   }
   else{
@@ -626,6 +626,7 @@ function cancelInlineComment(node){
   $(node).parent().hide();
   $(node).parent().siblings(".last_comment").show();
   $(node).parent().siblings('.quick-edit-card').toggleClass('hidden');
+  $(node).parent().html('');
   return false;
 }
 
@@ -640,3 +641,12 @@ $(document).ready(function(){
     $(this).animate({top: -$(this).outerHeight()}, 500);
   });
 });
+
+function DisableNullFields() {
+  $('input').each(function(i) {
+    var $input = $(this);
+    if ($input.val() == '')
+      $input.attr('disabled', 'disabled');
+    }
+  );
+};
