@@ -42,7 +42,7 @@ Redmine::Plugin.register :redmine_agile do
                               :after => :gantt,
                               :param => :project_id
 
-  menu :admin_menu, :agile, {:controller => 'settings', :action => 'plugin', :id => "redmine_agile"}, :caption => :label_agile
+  menu :admin_menu, :agile, {:controller => 'settings', :action => 'plugin', :id => "redmine_agile"}, :caption => :label_agile, :html => {:class => 'icon icon-agile'}
 
   project_module :agile do
     permission :manage_public_agile_queries, {:agile_queries => [:new, :create, :edit, :update, :destroy]}, :require => :member

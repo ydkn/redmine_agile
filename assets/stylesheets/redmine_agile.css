@@ -1,7 +1,7 @@
 /**********************************************************************/
 /* ICONS
 /**********************************************************************/
-#admin-menu a.agile { background-image: url(../images/agile.png);}
+.icon-agile { background-image: url(../images/agile.png); }
 .icon-fullscreen { background-image:  url(../images/fullscreen.png); }
 
 /**********************************************************************/
